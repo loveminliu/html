@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+        .box{
+            width: 300px;
+            height: 100px;
+            margin:10px auto;
+            border: 1px solid #000;
+        }
+        .active{
+        	border-radius: 50%;
+            border: 1px solid #000;
+            background-color: pink;
+        }
+    </style>
+    </head>
+    <body>
+    <div class="box box1"></div>
+    <div class="box box2 "></div>
+    <div class="box box3"></div>
+    <div class="box box4"></div>
+
+    <button>切换</button>
+
+    <script type="text/javascript">
+    	var box1 = document.querySelector(".box1");
+    	box1.classList.add('active');
+
+    	var box3 = document.querySelector(".box3");
+    	box3.classList.contains('active');
+    	
+    	document.querySelector("button").onclick=function(){
+    		box3.classList.toggle('active');
+    	}
+    </script>
+    </body>
+</html>

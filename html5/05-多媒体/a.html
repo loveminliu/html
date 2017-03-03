@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+		<!-- 引入字体图标的文件-->
+    	<link rel="stylesheet" href="css/font-awesome.min.css"/>
+
+    	<style>
+    		*{
+        	    margin: 0;
+        	    padding: 0;
+        	}
+    		figcaption {
+    			text-align: center;
+    			line-height: 150px;
+    			font-family: "Microsoft Yahei";
+            	font-size:24px;
+    		}
+    		.palyer{
+    			width: 720px;
+    			height: 360px;
+				margin: 10px auto;
+				border: 1px solid #000;
+			    background: url(images/loading.gif) center no-repeat #000;
+			    border-radius: 20px;
+			    position: relative;
+			    background-size:auto 100%;
+    		}
+
+    		.palyer video{
+	            height:100%;
+	            display: block;
+	            margin:0 auto;
+	        }
+	     /* 控制条*/
+
+        .controls{
+            width: 700px;
+            height:40px;
+            background-color: rgba(255, 255, 0, 0.3);
+            position: absolute;
+            bottom:10px;
+            left:10px;
+            border-radius: 10px;
+        }
+	        /*开关*/
+        .switch{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left:10px;
+            top:10px;
+
+            text-align: center;
+            line-height: 20px;
+            color:yellow;
+
+        }
+        /*进度条*/
+        .progress{
+            width: 432px;
+            height: 10px;
+            position: absolute;
+            background-color: rgba(255,255,255,0.4);
+            left:40px;
+            top:15px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+         /* 当前进度*/
+        .curr-progress{
+            width: 50%;
+            height: 10px;
+            background-color: #fff;
+        }
+        /* 时间模块*/
+        .time{
+            width: 120px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            color:#fff;
+            position: absolute;
+            left:510px;
+            top:10px;
+            font-size:12px;
+
+        }
+        /*全屏*/
+        .extend{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+
+            right:20px;
+            top:10px;
+
+            text-align: center;
+            line-height: 20px;
+            color:yellow;
+        }
+    	</style>
+    </head>
+    <body>
+    	<!-- 多媒体 -->
+		<figure>
+			<figcaption>视频案例</figcaption>
+			<div class="palyer">
+
+				<video src="video/fun.mp4"></video>
+
+				<div class="controls">
+
+					<a href="#" class="switch icon-play"></a>
+					<div class="progress">
+						<div class="curr-progress"></div>
+					</div>
+
+					<div class="time">
+						<span class="curr-time">00:00:00</span>
+						<span class="total-time">00:00:00</span>
+					</div>
+
+					<a href="#" class="extend icon-resize-full"></a>
+
+				</div>
+
+			</div>
+
+		</figure>
+
+		<script type="text/javascript">
+			
+			var video = document.querySelector("video");
+
+			var plyBtn = document.querySelector(".switch");
+
+			var currProgress = document.querySelector(".curr-progress");
+
+			var currTime = document.querySelector('.curr-time');
+
+			var totalTime = document.querySelector('.total-time');
+
+			var extend = document.querySelector('.extend');
+
+
+			plyBtn.onclick = function(){
+				if (video.paused){
+					video.play();
+//                   切换图标
+                   this.classList.remove('icon-play');
+                   this.classList.add('icon-pause');
+				} else {
+					video.pause();
+					this.classList.remove('icon-pause');
+                   this.classList.add('icon-play');
+				}
+			}
+
+			// 全屏
+        extend.onclick=function(){
+//            全屏的h5代码
+            video.webkitRequestFullScreen();
+        }
+		</script>
+    </body>
+</html>
